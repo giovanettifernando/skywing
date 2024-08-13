@@ -8,7 +8,7 @@
             </div>
             <div class="flex items-center justify-center flex-shrink-0 w-32 h-8 bg-gray-500 rounded-lg">
                 <span class="text-sm font-medium text-white">
-                    USD {{ number_format($user->wallet_balance / 100, 2,) }}
+                    USD {{  number_format($user->wallet_balance / 100, 2,) }}
                 </span>
             </div>
         </div>
