@@ -13,9 +13,8 @@ class WalletController extends Controller
         $amount = $request->input('amount');
 
         // Adicionar o valor à carteira do usuário
-        $user->wallet_balance += $amount * 100; // Supondo que o valor seja enviado em dólares
+        $user->wallet_balance += $amount * 100;
         $user->save();
-
-        return redirect()->back()->with('success', 'Saldo adicionado com sucesso!');
+        return redirect()->back()->with('success', 'Balance successfully added!');
     }
 }

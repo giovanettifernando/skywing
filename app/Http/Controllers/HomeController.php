@@ -23,11 +23,4 @@ class HomeController extends Controller
             'user' => $user, // Passa o usuário para a view
         ]);
     }
-
-
-    public function show($slug)
-    {
-        $flight = $this->flight->where('slug', $slug)->firstOrFail();
-        return view('flights.flight', compact('flight'));
-    }
 }

@@ -8,7 +8,6 @@ use App\Http\Controllers\ProfileController; //
 
 // Rotas principais
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/flights/{slug}', [HomeController::class, 'show']);
 
 Route::post('/wallet/add', [WalletController::class, 'addMoney'])->name('wallet.add');
 Route::post('/flights/{flight}/book', [FlightBookingController::class, 'book'])->name('flights.book');
@@ -27,19 +26,15 @@ Route::prefix('/admin')
 
 // Breeze
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/profile/user_flights', [ProfileController::class, 'user_flights'])->name('profile.user_flights');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-
-
-
-
+    Route::get('/profile/user_flights', [ProfileController::class, 'user_flights'])->name('profile.user_flights');
+    Route::get('/profile/user_flights/{slug}', [ProfileController::class, 'show'])->name('profile.user_flights.slug');
 
 
 

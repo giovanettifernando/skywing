@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('logo_url')->nullable();
             $table->string('slug')->unique();
             $table->decimal('price_usd', 9, 2);
+            $table->string('gate');
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });

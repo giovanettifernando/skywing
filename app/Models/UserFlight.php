@@ -14,23 +14,47 @@ class UserFlight extends Model
         'amount',
     ];
 
+    public function flight()
+{
+    return $this->belongsTo(Flight::class);
+}
+
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($userFlight) {
-            $userFlight->seat_number = self::generateSeatNumber();
+            $userFlight->seat_number = self::generateSeatNumber($userFlight->flight_id);
         });
     }
 
-    private static function generateSeatNumber()
+    private static function generateSeatNumber($flightId)
     {
-        return rand(1, 100);
-    }
+        $seats = range('A', 'I');
+        $numbers = range(1, 50);
 
+        $takenSeats = self::where('flight_id', $flightId)->pluck('seat_number')->toArray();
 
-    public function flight()
-    {
-        return $this->belongsTo(Flight::class);
+        // Gera um número de assento único
+        do {
+            $seat = $seats[array_rand($seats)] . str_pad($numbers[array_rand($numbers)], 2, '0', STR_PAD_LEFT);
+        } while (in_array($seat, $takenSeats));
+
+        return $seat;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

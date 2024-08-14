@@ -10,12 +10,34 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\UserFlight;
+use App\Models\Flight;
 
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
+
+
+
+
+public function show($slug)
+{
+
+    $flight = Flight::where('slug', $slug)->firstOrFail();
+    $userFlight = UserFlight::where('flight_id', $flight->id)
+                            ->where('user_id', auth()->id())
+                            ->firstOrFail();
+
+    return view('profile.boarding-pass', [
+        'flight' => $flight,
+        'userFlight' => $userFlight
+    ]);
+}
+
+
+
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [

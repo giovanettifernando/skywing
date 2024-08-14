@@ -21,6 +21,9 @@ class FlightFactory extends Factory
             'Ryanair'
         ];
 
+        $letter = chr(rand(65, 90));
+
+
         return [
             'origin' => $this->faker->city,
             'destination' => $this->faker->city,
@@ -30,6 +33,7 @@ class FlightFactory extends Factory
             'company_name' => $this->faker->randomElement($companies),
             'price_usd' => $this->faker->numberBetween(100, 1000),
             'is_active' => $this->faker->boolean,
+            'gate' => $this->faker->randomElement(range('A', 'Z')),
             'slug' => Str::slug($this->faker->city . '-to-' . $this->faker->city . '-' . Str::random(10)),
         ];
     }
