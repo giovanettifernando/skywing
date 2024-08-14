@@ -27,6 +27,8 @@
                 <table class="w-full p-4 bg-white rounded shadow">
                     @forelse ($flights as $flight)
                         <div class="block p-2 m-4">
+                            <h1 class="mb-2 text-xl font-bold">{{ $flight->origin }} / {{ $flight->destination }}</h1>
+
                             @if($flight->logo_url)
                                 <div class="mb-2">
                                     <div>

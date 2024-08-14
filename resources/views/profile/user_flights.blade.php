@@ -8,9 +8,8 @@
             </div>
             <div class="flex items-center justify-center flex-shrink-0 w-32 h-8 bg-gray-500 rounded-lg">
                 <span class="text-sm font-medium text-white">
-                    USD {{ number_format(Auth::user()->wallet_balance / 100, 2,) }}
+                    USD {{ number_format(Auth::user()->wallet_balance / 100, 2) }}
                 </span>
-                <p>Click here to add money</p>
             </div>
         </div>
     </x-slot>
@@ -21,6 +20,11 @@
                 <div class="p-4 bg-white rounded shadow">
                     @forelse ($userFlights as $userFlight)
                         <div class="block p-2 m-4">
+
+                            <h1 class="mb-2 text-xl font-bold">
+                                {{ $userFlight->flight->origin }} / {{ $userFlight->flight->destination }}
+                            </h1>
+
                             @if($userFlight->flight->logo_url)
                                 <div class="mb-2">
                                     <div>
