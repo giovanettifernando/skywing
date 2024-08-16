@@ -67,15 +67,18 @@
                     </div>
 
                     <div class="w-full mb-6" >
-                        <label for="" class="block mb-2 ">Price(USD)</label>
-                        <input type="text" class="w-full rounded" name="price_usd">
-                        @error('price_usd')
+                        <label for="" class="block mb-2 ">Gate</label>
+                        <input type="text" class="w-full rounded" name="gate">
+                        @error('gate')
                             <div class="w-full p-2 mt-2 font-bold text-red-700 bg-red-200 border border-red-700 rounded">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
 
+                    <div class="w-full mb-6" >
+                        <label for="" class="block mb-2 ">Price(USD)</label>
+                        <input type="text" class="w-full rounded" name="price_usd">
                         @error('price_usd')
                             <div class="w-full p-2 mt-2 font-bold text-red-700 bg-red-200 border border-red-700 rounded">
                                 {{ $message }}

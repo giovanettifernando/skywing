@@ -15,9 +15,14 @@ class UserFlight extends Model
     ];
 
     public function flight()
-{
-    return $this->belongsTo(Flight::class);
-}
+    {
+        return $this->belongsTo(Flight::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected static function boot()
     {

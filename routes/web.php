@@ -6,14 +6,10 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController; //
 
-// Rotas principais
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::post('/wallet/add', [WalletController::class, 'addMoney'])->name('wallet.add');
 Route::post('/flights/{flight}/book', [FlightBookingController::class, 'book'])->name('flights.book');
-
-
-
 
 // Rotas admin
 Route::prefix('/admin')
@@ -21,6 +17,7 @@ Route::prefix('/admin')
     ->name('admin.')
     ->group(function () {
         Route::resource('flights', \App\Http\Controllers\Admin\FlightsController::class);
+        Route::get('/flights/{slug}', [FlightsController::class, 'show'])->name('flights.show');
     });
 
 
@@ -34,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/user_flights', [ProfileController::class, 'user_flights'])->name('profile.user_flights');
-    Route::get('/profile/user_flights/{slug}', [ProfileController::class, 'show'])->name('profile.user_flights.slug');
+    Route::get('/profile/user_flights/{slug}', [ProfileController::class, 'show'])->name('profile.user_flights.boarding-pass');
 
 
 

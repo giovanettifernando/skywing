@@ -41,7 +41,7 @@
                             <p>Date: {{ $userFlight->flight->flight_date }} | Departure at {{ $userFlight->flight->departure_time }} – Arrival at {{ $userFlight->flight->arrival_time }}</p>
                             <p>Price (USD): {{ $userFlight->flight->price_usd }}</p>
 
-                            <a href="{{ route('profile.user_flights.slug', ['slug' => $userFlight->flight->slug]) }}">
+                            <a href="{{ route('profile.user_flights.boarding-pass', ['slug' => $userFlight->flight->slug]) }}">
                                 <button class="block p-1 mt-1 mb-2 text-white bg-gray-500 rounded hover:bg-gray-800">
                                     Boarding Pass
                                 </button>

@@ -23,6 +23,7 @@ class Flight extends Model
         'logo_url',
         'slug',
         'price_usd',
+        'gate',
         'is_active',
     ];
 
@@ -32,7 +33,7 @@ class Flight extends Model
         parent::boot();
 
         static::creating(function ($flight) {
-            $flight->slug = Str::slug($flight->origin . '-to-' . $flight->destination);
+            $flight->slug = Str::slug($flight->origin . '-to-' . $flight->destination . '-' . Str::random(10));
         });
     }
 

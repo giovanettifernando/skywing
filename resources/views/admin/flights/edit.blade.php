@@ -43,6 +43,11 @@
                     </div>
 
                     <div class="w-full mb-6" >
+                        <label for="gate" class="block mb-2 ">Gate</label>
+                        <input type="text" id="gate" class="w-full rounded" name="gate" value="{{ $flight->gate }}">
+                    </div>
+
+                    <div class="w-full mb-6" >
                         <label for="price_usd" class="block mb-2 ">Price(USD)</label>
                         <input type="text" id="price_usd" class="w-full rounded" name="price_usd" value="{{ $flight->price_usd }}">
                     </div>

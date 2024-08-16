@@ -28,7 +28,11 @@
                         @foreach($flights as $index => $flight)
                             <tr>
                                 <td class="px-2 py-4 text-left">{{ $index + 1 }}</td> <!-- Index incrementado para a coluna # -->
-                                <td class="px-2 py-4 text-left">{{ $flight->origin . ' / ' . $flight->destination }}</td>
+                                <td class="px-2 py-4 text-left">
+                                    <a href="{{ url('/admin/flights/' . $flight->slug) }}" class="hover:underline">
+                                        {{ $flight->origin . ' / ' . $flight->destination }}
+                                    </a>
+                                </td>
                                 <td class="px-2 py-4 text-left">{{ $flight->flight_date }}</td>
                                 <td class="px-2 py-4 text-left">{{ $flight->departure_time }}</td>
                                 <td class="px-2 py-4 text-left">{{ $flight->company_name }}</td>

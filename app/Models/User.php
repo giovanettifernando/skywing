@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function flights()
     {
-        return $this->belongsToMany(Flight::class, 'user_flights');
+        return $this->belongsToMany(Flight::class, 'user_flights')->withPivot('seat_number');;
     }
 
 

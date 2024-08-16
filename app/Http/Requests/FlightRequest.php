@@ -27,6 +27,7 @@ class FlightRequest extends FormRequest
             'arrival_time' => 'required|date_format:H:i:s',
             'company_name' => 'required|string|max:30',
             'price_usd' => 'required|numeric|min:0',
+            'gate' => 'required|string|max:1',
             'is_active' => 'required|boolean',
         ];
     }

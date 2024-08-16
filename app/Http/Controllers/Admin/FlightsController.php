@@ -25,6 +25,16 @@ class FlightsController extends Controller
         return view('admin.flights.index', compact('flights'));
     }
 
+
+    public function show($slug)
+    {
+
+        $flight = $this->flight->where('slug', $slug)->firstOrFail();
+        $userFlights = $flight->users()->withPivot('seat_number')->get();
+        return view('admin.flights.flight', compact('flight', 'userFlights'));
+    }
+
+
     public function create(User $user)//User $user
     {
         // $users = $user->all(['id', 'name']);
