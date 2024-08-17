@@ -14,11 +14,11 @@ class UserFlightSeeder extends Seeder
         $flights = Flight::all();
 
         foreach ($flights as $flight) {
-            // Cria 15 usuários para o voo
+// Create 15 users for the flight
             $users = User::factory(15)->create();
 
             foreach ($users as $user) {
-                // Cria UserFlight com assento único
+// Create UserFlight with a unique seat
                 UserFlight::factory()->create([
                     'user_id' => $user->id,
                     'flight_id' => $flight->id,

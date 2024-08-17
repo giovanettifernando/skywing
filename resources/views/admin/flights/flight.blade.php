@@ -53,7 +53,7 @@
                     <tbody>
                         @foreach($userFlights as $index => $userFlight)
                             <tr>
-                                <td class="px-2 py-4 text-left">{{ $index + 1 }}</td> <!-- Index incrementado para a coluna # -->
+                                <td class="px-2 py-4 text-left">{{ $index + 1 }}</td>
                                 <td class="px-2 py-4 text-left">{{ $userFlight->name }}</td>
                                 <td class="px-2 py-4 text-left">{{ $userFlight->email }}</td>
                                 <td class="px-2 py-4 text-left">{{ $userFlight->pivot->seat_number }}</td>

@@ -16,11 +16,12 @@ class HomeController extends Controller
     public function index(Request $request): View
     {
         $flights = $this->flight->where('is_active', true)->orderBy('flight_date', 'desc')->paginate(10);
-        $user = $request->user(); // Obtém o usuário logado
+        $user = $request->user(); // Get the logged-in user
 
         return view('flights.index', [
             'flights' => $flights,
-            'user' => $user, // Passa o usuário para a view
+            'user' => $user, // Pass the user to the view
+
         ]);
     }
 }

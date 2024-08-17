@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController; //
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-
 Route::post('/wallet/add', [WalletController::class, 'addMoney'])->name('wallet.add');
 Route::post('/flights/{flight}/book', [FlightBookingController::class, 'book'])->name('flights.book');
 

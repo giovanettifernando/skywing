@@ -13,19 +13,20 @@ class FlightBookingController extends Controller
     {
         $user = Auth::user();
 
-        // Verificar se o usuário tem saldo suficiente
+
+// Check if the user has sufficient balance
         if ($user->wallet_balance < $flight->price_usd * 100) {
             return redirect()->back()->with('error', 'Insufficient balance to book this flight. Please recharge your wallet.');
         }
 
-        // Debitar o valor do saldo
+// Debit the amount from the balance
         $user->wallet_balance -= $flight->price_usd * 100;
         $user->save();
 
-        // Gerar um número de assento único
+// Generate a unique seat number
         $seatNumber = $this->generateSeatNumber($flight->id);
 
-        // Registrar a reserva na tabela user_flights com o número de assento
+// Record the reservation in the user_flights table with the seat number
         UserFlight::create([
             'user_id' => $user->id,
             'flight_id' => $flight->id,
@@ -37,14 +38,14 @@ class FlightBookingController extends Controller
 
     private function generateSeatNumber($flightId)
     {
-        $letters = range('A', 'I'); // Letras de A a I
-        $letter = $letters[array_rand($letters)]; // Escolhe uma letra aleatória
-        $number = str_pad(rand(1, 50), 2, '0', STR_PAD_LEFT); // Número de 01 a 50
+        $letters = range('A', 'I');
+        $letter = $letters[array_rand($letters)];
+        $number = str_pad(rand(1, 50), 2, '0', STR_PAD_LEFT);
         $seatNumber = $letter . $number;
 
-        // Verificar se o número de assento já está em uso
+// Check if the seat number is already in use
         while (UserFlight::where('flight_id', $flightId)->where('seat_number', $seatNumber)->exists()) {
-            $number = str_pad(rand(1, 50), 2, '0', STR_PAD_LEFT); // Novo número
+            $number = str_pad(rand(1, 50), 2, '0', STR_PAD_LEFT);
             $seatNumber = $letter . $number;
         }
 

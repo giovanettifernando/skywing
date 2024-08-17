@@ -11,7 +11,6 @@
                 <form action="{{ route('admin.flights.update', $flight->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <!-- essa diretiva vai gerar um input com as configurações name _token value token -->
                     <div class="w-full mb-6">
                         <label for="origin" class="block mb-2 ">Origin</label>
                         <input type="text" id="origin" class="w-full rounded"  name="origin" value="{{ $flight->origin }}">

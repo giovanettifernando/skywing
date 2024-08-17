@@ -9,10 +9,10 @@ class FlightSeeder extends Seeder
 {
     public function run(): void
     {
-        // Criar 10 voos
+// Create 10 flights
         Flight::factory(10)->create();
 
-        // Criar 20 voos ativos
+// Create 20 active flights
         Flight::factory(20)->active()->create();
     }
 }

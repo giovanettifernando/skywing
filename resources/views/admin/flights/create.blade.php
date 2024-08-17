@@ -10,7 +10,6 @@
             <div class="p-5 overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <form action="{{ route('admin.flights.store') }}" method="post">
                     @csrf
-                    <!-- essa diretiva vai gerar um input com as configurações name _token value token -->
                     <div class="w-full mb-6">
                         <label for="" class="block mb-2 ">Origin</label>
                         <input type="text" class="w-full rounded"  name="origin">
