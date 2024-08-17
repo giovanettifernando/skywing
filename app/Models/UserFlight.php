@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class UserFlight extends Model
 {
+
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
         'flight_id',
@@ -46,20 +50,12 @@ class UserFlight extends Model
         } while (in_array($seat, $takenSeats));
 
         return $seat;
+
+        //unique seats
+        do {
+            $seat = $seats[array_rand($seats)] . str_pad($numbers[array_rand($numbers)], 2, '0', STR_PAD_LEFT);
+        } while (in_array($seat, $takenSeats));
+
+        return $seat;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

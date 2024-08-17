@@ -32,7 +32,7 @@ class FlightFactory extends Factory
             'arrival_time' => $this->faker->time,
             'company_name' => $this->faker->randomElement($companies),
             'price_usd' => $this->faker->numberBetween(100, 1000),
-            'gate' => $this->faker->randomElement(range('A', 'Z')),
+            'gate' => $this->faker->randomElement(range('A', 'M')),
             'is_active' => $this->faker->boolean,
             'slug' => Str::slug($this->faker->city . '-to-' . $this->faker->city . '-' . Str::random(10)),
         ];

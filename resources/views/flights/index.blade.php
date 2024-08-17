@@ -64,17 +64,26 @@
 
                             <p>Date: {{ $flight->flight_date }} | Departure at {{ $flight->departure_time }} – Arrival at {{ $flight->arrival_time }}</p>
                             <p>Price (USD): {{ $flight->price_usd }}</p>
-
-                            <form action="{{ route('flights.book', $flight) }}" method="POST">
-                                @csrf
-                                <button
-                                    type="submit"
-                                    class="block p-1 mt-1 mb-2 text-white rounded align-left
-                                        {{ $isBooked ? 'bg-gray-800 cursor-not-allowed' : 'bg-gray-500 hover:bg-gray-800' }}"
-                                    {{ $isBooked ? 'disabled' : '' }}>
-                                    {{ $isBooked ? 'Booked' : 'Book now' }}
-                                </button>
-                            </form>
+                            @auth
+                                <form action="{{ route('flights.book', $flight) }}" method="POST">
+                                    @csrf
+                                    <button
+                                        type="submit"
+                                        class="block p-1 mt-1 mb-2 text-white rounded align-left
+                                            {{ $isBooked ? 'bg-gray-800 cursor-not-allowed' : 'bg-gray-500 hover:bg-gray-800' }}"
+                                        {{ $isBooked ? 'disabled' : '' }}>
+                                        {{ $isBooked ? 'Booked' : 'Book now' }}
+                                    </button>
+                                </form>
+                            @else
+                                <form action="{{ route('login') }}" method="GET">
+                                    <button
+                                        type="submit"
+                                        class="block p-1 mt-1 mb-2 text-white bg-gray-500 rounded align-left hover:bg-gray-800">
+                                        Book now
+                                    </button>
+                                </form>
+                            @endauth
                             <hr>
                         </div>
 
